@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'todo';
+  message = 'my first angular data binding message for interpolation';
 }

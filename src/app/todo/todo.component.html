@@ -1,0 +1,31 @@
+<h1>Todo</h1>
+
+<div class="container">
+
+  <div class="alert alert-warning" *ngIf="todoForm.dirty && todoForm.invalid">Enter valid values</div>
+  <div class="alert alert-warning" *ngIf="todoForm.dirty && targetDate.invalid">Enter valid Target Date</div>
+  <div class="alert alert-warning" *ngIf="todoForm.dirty && description.invalid">Enter valid Description, with min 5
+    chars</div>
+
+  <!-- template variable to reference form and check logic around it -> todoForm -->
+  <!-- call saveTodo() only when form is NOT invalid -->
+  <form (ngSubmit)="!todoForm.invalid && saveTodo()" #todoForm="ngForm">
+
+    <fieldset class="form-group">
+      <label>Description</label>
+      <input type="text" [(ngModel)]="todo.description" class="form-control" name="description" required="required"
+        #description="ngModel" minlength="5">
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label>Target Date</label>
+      <!-- #targetDate="ngModel"... create reference to input field by creating template variable -->
+      <!-- [ngModel] is property binding... (ngModelChange) is event binding... and [(ngModel)] is both-->
+      <input type="date" [ngModel]="todo.targetDate | date:'yyyy-MM-dd'" (ngModelChange)="todo.targetDate = $event"
+        class="form-control" name="targetDate" required="required" #targetDate="ngModel">
+    </fieldset>
+
+    <button type="submit" class="btn btn-success">Save</button>
+  </form>
+
+</div>
