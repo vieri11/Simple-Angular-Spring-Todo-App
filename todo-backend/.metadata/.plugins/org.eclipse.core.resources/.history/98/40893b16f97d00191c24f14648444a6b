@@ -1,0 +1,27 @@
+package com.demo.rest.webservices.demowebservices.todo;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class TodoHardCodedService {
+
+	private static List<Todo> todos = new ArrayList<>();
+	private static int idCounter = 0;
+
+	// static initializer block
+	static {
+		todos.add(new Todo(++idCounter, "Cris", "Learn dance technique", new Date(), false));
+		todos.add(new Todo(++idCounter, "Cris", "Learn about microservices", new Date(), false));
+		todos.add(new Todo(++idCounter, "Cris", "Learn Angular", new Date(), false));
+	}
+
+	public List<Todo> findAll() {
+
+		return this.todos;
+	}
+
+}

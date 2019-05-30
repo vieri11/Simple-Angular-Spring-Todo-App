@@ -1,0 +1,19 @@
+package com.demo.rest.webservices.demowebservices.todo;
+
+import java.util.List;
+
+import org.springframework.web.bind.annotation.RestController;
+
+import com.demo.rest.webservices.demowebservices.todo.Todo;
+
+@RestController
+public class TodoResource {
+
+	private TodoHardCodedService todoService;
+	
+	public List<Todo> getAllTodos(String username) {
+
+		return null;
+	}
+
+}
